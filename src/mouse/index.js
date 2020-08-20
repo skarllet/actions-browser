@@ -5,7 +5,7 @@ const create = page => {
 
   let position = vector.create(0, 0);
 
-  const mouseMove = ({ x, y }, duration = 250) => new Promise((resolve) => {
+  const mouseMove = ({ x, y, duration = 200 }) => new Promise((resolve) => {
     const steps = Math.round(duration / INTERVAL)
     let count = 0
 
@@ -33,11 +33,10 @@ const create = page => {
   return {
     'browser:page:mouse:move': mouseMove,
 
-    'browser:page:mouse:move:to': async ({ query }, duration) => {
+    'browser:page:mouse:move:to': async ({ query = '', duration }) => {
       const { x, y, width, height } = await page.evaluate(query => {
-        const { x, y, width, height } = document
-                          .querySelector(query)
-                          .getBoundingClientRect()
+        const { x, y, width, height } = document.querySelector(query).getBoundingClientRect()
+
         return { x, y, width, height }
       }, query)
 
