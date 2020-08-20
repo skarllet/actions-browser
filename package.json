@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/skarllet/actions-browser/issues"
   },
-  "homepage": "https://github.com/skarllet/actions-browser#readme"
+  "homepage": "https://github.com/skarllet/actions-browser#readme",
+  "dependencies": {
+    "puppeteer": "^5.2.1"
+  }
 }
